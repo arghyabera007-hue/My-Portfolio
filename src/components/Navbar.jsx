@@ -4,7 +4,6 @@ import { Menu, X } from "lucide-react";
 import { navLinks } from "../data/navigation";
 import { personalInfo } from "../data/personalInfo";
 import { useScrollSpy } from "../hooks/useScrollSpy";
-import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -82,14 +81,9 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* Desktop Right Actions */}
-          <div className="hidden md:flex items-center gap-3">
-            <ThemeToggle />
-          </div>
 
           {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center gap-2">
-            <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 rounded-lg bg-surface-800 light:bg-surface-100 hover:bg-surface-700 light:hover:bg-surface-200 transition-colors cursor-pointer"

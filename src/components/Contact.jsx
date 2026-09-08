@@ -10,6 +10,7 @@ import {
 import { GithubIcon, LinkedinIcon } from "./Icons";
 import SectionHeading from "./SectionHeading";
 import { personalInfo } from "../data/personalInfo";
+import RadialRevealButton from "./RadialRevealButton";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -188,30 +189,36 @@ export default function Contact() {
                 )}
               </div>
 
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+              <RadialRevealButton
                 type="submit"
                 disabled={status === "sending"}
-                className="w-full flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold text-white rounded-xl gradient-bg shadow-lg shadow-primary-500/20 hover:shadow-primary-500/35 transition-shadow disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed"
+                showText
+                fill="#6366f1"
+                textColor="#ffffff"
+                hoverFill="#ffffff"
+                hoverTextColor="#6366f1"
+                border={{ borderWidth: 2, borderStyle: "solid", borderColor: "#6366f1" }}
+                padding="14px 24px"
+                rounded={12}
+                style={{ width: "100%", fontSize: "0.875rem", fontWeight: 600 }}
               >
                 {status === "sending" ? (
                   <>
-                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin inline-block mr-2" />
                     Sending...
                   </>
                 ) : status === "success" ? (
                   <>
-                    <CheckCircle size={16} />
+                    <CheckCircle size={16} className="inline mr-2" />
                     Message Sent!
                   </>
                 ) : (
                   <>
-                    <Send size={16} />
+                    <Send size={16} className="inline mr-2" />
                     Send Message
                   </>
                 )}
-              </motion.button>
+              </RadialRevealButton>
             </form>
           </motion.div>
 

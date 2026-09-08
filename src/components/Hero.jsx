@@ -57,8 +57,9 @@ export default function Hero() {
               transition={{ type: "spring", stiffness: 200 }}
               className="relative overflow-hidden shadow-2xl rounded-2xl"
               style={{
-                width: "300px",
-                height: "370px",
+                width: "360px",
+                height: "480px",
+                aspectRatio: "3 / 4",
                 background: "linear-gradient(135deg, #6366f1, #8b5cf6, #06b6d4)",
                 padding: "3px",
                 marginTop: "-24px",
@@ -68,7 +69,8 @@ export default function Hero() {
                 <img
                   src="/images/profile.jpg"
                   alt={personalInfo.name}
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: "center 25%" }}
                 />
               </div>
             </motion.div>

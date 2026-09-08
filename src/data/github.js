@@ -1,13 +1,5 @@
-// Mock GitHub data — replace with API call later via useGithubRepos hook
-export const githubProfile = {
-  username: "yourusername",
-  profileUrl: "https://github.com/yourusername",
-  avatarUrl: "https://github.com/identicons/yourusername.png",
-  bio: "Computer Science Student | Aspiring Software Developer",
-  publicRepos: 12,
-  followers: 25,
-  following: 30,
-};
+// Single source of truth for the GitHub username used throughout the app.
+export const GITHUB_USERNAME = "arghyabera007-hue";
 
 export const githubRepos = [
   {
@@ -19,7 +11,7 @@ export const githubRepos = [
     languageColor: "#f1e05a",
     stars: 5,
     forks: 2,
-    url: "https://github.com/yourusername/exam-registration-system",
+    url: "https://github.com/arghyabera007-hue/exam-registration-system",
   },
   {
     id: 2,
@@ -30,7 +22,7 @@ export const githubRepos = [
     languageColor: "#3572A5",
     stars: 8,
     forks: 3,
-    url: "https://github.com/yourusername/image-metadata-classifier",
+    url: "https://github.com/arghyabera007-hue/image-metadata-classifier",
   },
   {
     id: 3,
@@ -41,7 +33,7 @@ export const githubRepos = [
     languageColor: "#f1e05a",
     stars: 12,
     forks: 4,
-    url: "https://github.com/yourusername/portfolio-website",
+    url: "https://github.com/arghyabera007-hue/My-Portfolio",
   },
   {
     id: 4,
@@ -52,7 +44,7 @@ export const githubRepos = [
     languageColor: "#f1e05a",
     stars: 3,
     forks: 1,
-    url: "https://github.com/yourusername/weather-dashboard",
+    url: "https://github.com/arghyabera007-hue/weather-dashboard",
   },
   {
     id: 5,
@@ -63,7 +55,7 @@ export const githubRepos = [
     languageColor: "#b07219",
     stars: 15,
     forks: 6,
-    url: "https://github.com/yourusername/dsa-solutions",
+    url: "https://github.com/arghyabera007-hue/dsa-solutions",
   },
   {
     id: 6,
@@ -74,6 +66,6 @@ export const githubRepos = [
     languageColor: "#b07219",
     stars: 4,
     forks: 2,
-    url: "https://github.com/yourusername/java-mini-projects",
+    url: "https://github.com/arghyabera007-hue/java-mini-projects",
   },
 ];

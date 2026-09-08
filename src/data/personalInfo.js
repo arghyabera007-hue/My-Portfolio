@@ -19,8 +19,8 @@ technologies, solving algorithmic challenges, or collaborating on open-source pr
   department: "Computer Science & Engineering",
   location: "West Bengal, India",
   email: "arghyabera007@gmail.com",
-  github: "https://github.com/yourusername",
-  linkedin: "https://linkedin.com/in/yourusername",
+  github: "https://github.com/arghyabera007-hue",
+  linkedin: "https://www.linkedin.com/in/arghya-bera-02538a31b/",
   resumeUrl: "/resume.pdf",
 
   stats: [

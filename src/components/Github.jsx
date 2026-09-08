@@ -8,9 +8,22 @@ import {
 } from "lucide-react";
 import { GithubIcon } from "./Icons";
 import SectionHeading from "./SectionHeading";
-import { githubProfile, githubRepos } from "../data/github";
+import { GITHUB_USERNAME, githubRepos } from "../data/github";
+import { useGithubProfile } from "../hooks/useGithubProfile";
+import RadialRevealButton from "./RadialRevealButton";
 
 export default function Github() {
+  const { profile, loading } = useGithubProfile(GITHUB_USERNAME);
+
+  // Fallback values shown while loading or if the API fails.
+  const username = profile?.username ?? GITHUB_USERNAME;
+  const bio = profile?.bio ?? "";
+  const publicRepos = profile?.publicRepos ?? "-";
+  const followers = profile?.followers ?? "-";
+  const following = profile?.following ?? "-";
+  const avatarUrl = profile?.avatarUrl ?? null;
+  const profileUrl = profile?.profileUrl ?? `https://github.com/${GITHUB_USERNAME}`;
+
   return (
     <section id="github" className="section-padding bg-surface-900/50 light:bg-surface-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -27,45 +40,65 @@ export default function Github() {
           className="max-w-2xl mx-auto mb-12 p-6 rounded-2xl card-dark"
         >
           <div className="flex flex-col sm:flex-row items-center gap-6">
-            {/* Avatar */}
-            <div className="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-white shadow-lg shadow-primary-500/20">
-              <GithubIcon size={36} />
+            {/* Avatar — shows real GitHub photo, falls back to icon while loading */}
+            <div className="w-20 h-20 rounded-full gradient-bg flex items-center justify-center text-white shadow-lg shadow-primary-500/20 overflow-hidden flex-shrink-0">
+              {avatarUrl ? (
+                <img
+                  src={avatarUrl}
+                  alt={`${username} GitHub avatar`}
+                  className="w-full h-full object-cover rounded-full"
+                  loading="lazy"
+                />
+              ) : (
+                <GithubIcon size={36} />
+              )}
             </div>
 
             <div className="text-center sm:text-left flex-1">
-              <h3 className="text-xl font-bold text-surface-100 light:text-surface-800">
-                @{githubProfile.username}
+              <h3 className={`text-xl font-bold text-surface-100 light:text-surface-800${loading ? " opacity-50" : ""}`}>
+                @{username}
               </h3>
-              <p className="text-sm text-surface-400 light:text-surface-600 mb-3">
-                {githubProfile.bio}
-              </p>
+              {bio && (
+                <p className="text-sm text-surface-400 light:text-surface-600 mb-3">
+                  {bio}
+                </p>
+              )}
+              {!bio && (
+                <p className="text-sm text-surface-400 light:text-surface-600 mb-3">&nbsp;</p>
+              )}
 
               {/* Stats */}
               <div className="flex flex-wrap justify-center sm:justify-start gap-4 text-sm">
                 <span className="flex items-center gap-1.5 text-surface-400 light:text-surface-600">
                   <BookOpen size={14} className="text-primary-400" />
-                  <strong className="text-surface-200 light:text-surface-800">{githubProfile.publicRepos}</strong> repos
+                  <strong className="text-surface-200 light:text-surface-800">{publicRepos}</strong> repos
                 </span>
                 <span className="flex items-center gap-1.5 text-surface-400 light:text-surface-600">
                   <Users size={14} className="text-primary-400" />
-                  <strong className="text-surface-200 light:text-surface-800">{githubProfile.followers}</strong> followers
+                  <strong className="text-surface-200 light:text-surface-800">{followers}</strong> followers
                 </span>
                 <span className="flex items-center gap-1.5 text-surface-400 light:text-surface-600">
                   <Users size={14} className="text-primary-400" />
-                  <strong className="text-surface-200 light:text-surface-800">{githubProfile.following}</strong> following
+                  <strong className="text-surface-200 light:text-surface-800">{following}</strong> following
                 </span>
               </div>
             </div>
 
-            <a
-              href={githubProfile.profileUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg border border-surface-700 light:border-surface-300 text-surface-300 light:text-surface-600 hover:border-primary-500/30 hover:text-primary-400 transition-colors shrink-0"
-            >
-              <GithubIcon size={16} />
-              View Profile
-            </a>
+            <RadialRevealButton
+              label="View Profile"
+              link={profileUrl}
+              newTab
+              fill="transparent"
+              textColor="#94a3b8"
+              hoverFill="#6366f1"
+              hoverTextColor="#ffffff"
+              border={{ borderWidth: 1, borderStyle: "solid", borderColor: "#334155" }}
+              padding="8px 18px"
+              rounded={8}
+              addIcon
+              icon={{ type: "symbol", symbol: "", color: "#94a3b8", hoverColor: "#fff", size: 0, side: "left" }}
+              style={{ fontSize: "0.875rem", fontWeight: 500, flexShrink: 0 }}
+            />
           </div>
         </motion.div>
 

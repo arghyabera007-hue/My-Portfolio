@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { Download, FileText } from "lucide-react";
+import { FileText } from "lucide-react";
 import { personalInfo } from "../data/personalInfo";
+import RadialRevealButton from "./RadialRevealButton";
 
 export default function Resume() {
   return (
@@ -27,17 +28,19 @@ export default function Resume() {
             technical skills, projects, and academic background.
           </p>
 
-          <motion.a
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            href={personalInfo.resumeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 text-base font-semibold text-white rounded-xl gradient-bg shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40 transition-shadow"
-          >
-            <Download size={20} />
-            Download Resume
-          </motion.a>
+          <RadialRevealButton
+            label="Download Resume"
+            link={personalInfo.resumeUrl}
+            newTab
+            fill="#6366f1"
+            textColor="#ffffff"
+            hoverFill="#ffffff"
+            hoverTextColor="#6366f1"
+            border={{ borderWidth: 2, borderStyle: "solid", borderColor: "#6366f1" }}
+            padding="16px 36px"
+            rounded={12}
+            style={{ fontSize: "1rem", fontWeight: 600 }}
+          />
 
           <p className="mt-4 text-sm text-surface-500 light:text-surface-400">
             PDF format • Updated regularly
