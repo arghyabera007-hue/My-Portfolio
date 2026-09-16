@@ -57,7 +57,6 @@ export default function Contact() {
 
     // Simulate form submission — replace with actual service (EmailJS, Formspree, backend API)
     setTimeout(() => {
-      console.log("Form submitted:", formData);
       setStatus("success");
       setFormData({ name: "", email: "", message: "" });
       setTimeout(() => setStatus("idle"), 4000);

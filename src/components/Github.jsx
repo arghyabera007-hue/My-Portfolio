@@ -13,15 +13,15 @@ import { useGithubProfile } from "../hooks/useGithubProfile";
 import RadialRevealButton from "./RadialRevealButton";
 
 export default function Github() {
-  const { profile, loading } = useGithubProfile(GITHUB_USERNAME);
+  const { profile } = useGithubProfile(GITHUB_USERNAME);
 
-  // Fallback values shown while loading or if the API fails.
+  // Live GitHub profile data with safe fallbacks
   const username = profile?.username ?? GITHUB_USERNAME;
   const bio = profile?.bio ?? "";
-  const publicRepos = profile?.publicRepos ?? "-";
-  const followers = profile?.followers ?? "-";
-  const following = profile?.following ?? "-";
-  const avatarUrl = profile?.avatarUrl ?? null;
+  const publicRepos = profile?.publicRepos ?? 0;
+  const followers = profile?.followers ?? 0;
+  const following = profile?.following ?? 0;
+  const avatarUrl = profile?.avatarUrl ?? `https://github.com/${GITHUB_USERNAME}.png`;
   const profileUrl = profile?.profileUrl ?? `https://github.com/${GITHUB_USERNAME}`;
 
   return (
@@ -55,17 +55,14 @@ export default function Github() {
             </div>
 
             <div className="text-center sm:text-left flex-1">
-              <h3 className={`text-xl font-bold text-surface-100 light:text-surface-800${loading ? " opacity-50" : ""}`}>
+              <h3 className="text-xl font-bold text-surface-100 light:text-surface-800 mb-2">
                 @{username}
               </h3>
-              {bio && (
+              {bio ? (
                 <p className="text-sm text-surface-400 light:text-surface-600 mb-3">
                   {bio}
                 </p>
-              )}
-              {!bio && (
-                <p className="text-sm text-surface-400 light:text-surface-600 mb-3">&nbsp;</p>
-              )}
+              ) : null}
 
               {/* Stats */}
               <div className="flex flex-wrap justify-center sm:justify-start gap-4 text-sm">

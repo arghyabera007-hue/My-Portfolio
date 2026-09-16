@@ -1,6 +1,17 @@
 // Single source of truth for the GitHub username used throughout the app.
 export const GITHUB_USERNAME = "arghyabera007-hue";
 
+export const githubProfile = {
+  username: "arghyabera007-hue",
+  name: "Arghya Bera",
+  bio: null,
+  avatarUrl: "https://avatars.githubusercontent.com/u/225262757?v=4",
+  publicRepos: 3,
+  followers: 2,
+  following: 3,
+  profileUrl: "https://github.com/arghyabera007-hue",
+};
+
 export const githubRepos = [
   {
     id: 1,

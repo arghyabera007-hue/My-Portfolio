@@ -1,12 +1,30 @@
-﻿import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
+import { githubProfile } from "../data/github";
 
 // Polls the GitHub public user API at the given interval (ms).
 // Cleans up the interval when the component using this hook unmounts.
 const POLL_INTERVAL_MS = 5 * 60 * 1000; // 5 minutes
 
+function getInitialProfile(username) {
+  if (typeof window !== "undefined") {
+    try {
+      const cached = localStorage.getItem(`github_profile_${username}`);
+      if (cached) {
+        return JSON.parse(cached);
+      }
+    } catch {
+      // Ignore localStorage errors
+    }
+  }
+  if (githubProfile && githubProfile.username === username) {
+    return githubProfile;
+  }
+  return null;
+}
+
 export function useGithubProfile(username) {
-  const [profile, setProfile] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [profile, setProfile] = useState(() => getInitialProfile(username));
+  const [loading, setLoading] = useState(!profile);
   const [error, setError] = useState(null);
   const intervalRef = useRef(null);
 
@@ -22,7 +40,7 @@ export function useGithubProfile(username) {
           throw new Error(`GitHub API responded with status ${res.status}`);
         }
         const data = await res.json();
-        setProfile({
+        const profileData = {
           username: data.login,
           name: data.name,
           bio: data.bio,
@@ -31,11 +49,23 @@ export function useGithubProfile(username) {
           followers: data.followers,
           following: data.following,
           profileUrl: data.html_url,
-        });
+        };
+        setProfile(profileData);
         setError(null);
+
+        if (typeof window !== "undefined") {
+          try {
+            localStorage.setItem(
+              `github_profile_${username}`,
+              JSON.stringify(profileData)
+            );
+          } catch {
+            // Ignore localStorage errors
+          }
+        }
       } catch (err) {
-        // Do not overwrite existing profile data on a polling failure so the
-        // card keeps showing the last known values.
+        // Do not overwrite existing profile data on failure so the
+        // card keeps showing the last known / fallback values.
         setError(err.message);
       } finally {
         setLoading(false);
@@ -55,3 +85,4 @@ export function useGithubProfile(username) {
 
   return { profile, loading, error };
 }
+
