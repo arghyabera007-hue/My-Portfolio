@@ -9,8 +9,10 @@ export default function AnimatedCounter({ value, suffix = "", duration = 2 }) {
   useEffect(() => {
     if (!isInView) return;
 
-    let start = 0;
     const end = parseInt(value, 10);
+    if (isNaN(end) || end <= 0) return;
+
+    let start = 0;
     const stepTime = (duration * 1000) / end;
     const minStepTime = 16; // ~60fps
     const increment = Math.max(1, Math.floor(end / (duration * 60)));

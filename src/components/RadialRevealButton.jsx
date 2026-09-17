@@ -139,8 +139,14 @@ export default function RadialRevealButton({
     });
   };
 
-  const onEnter = (e) => { anchorTo(e); applyClip(); growTo(clip.current.max); };
+  const onEnter = (e) => {
+    if (disabled) return;
+    anchorTo(e);
+    applyClip();
+    growTo(clip.current.max);
+  };
   const onLeave = (e) => {
+    if (disabled) return;
     if (clip.current.r >= clip.current.max - 0.5) {
       anchorTo(e);
       clip.current.r = clip.current.max;
