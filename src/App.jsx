@@ -1,5 +1,3 @@
-import { useState, useCallback } from "react";
-import Loader from "./components/Loader";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -13,13 +11,9 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
-  const [loading, setLoading] = useState(true);
-  const handleLoaderDone = useCallback(() => setLoading(false), []);
-
   return (
     <>
-      {loading && <Loader onDone={handleLoaderDone} />}
-      <div className="min-h-screen" style={{ visibility: loading ? "hidden" : "visible" }}>
+      <div className="min-h-screen">
         <Navbar />
         <main>
           <Hero />
