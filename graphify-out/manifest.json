@@ -1,0 +1,218 @@
+{
+  ".oxlintrc.json": {
+    "mtime": 1787911920.380613,
+    "seen": 1791085962.0074186,
+    "ast_hash": "5e6e3cea3e89137071c142dd7835b0ef",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1791039029.7525342,
+    "seen": 1791085962.0074356,
+    "ast_hash": "1b2752d2a4293530d010b2cb65a0fdf3",
+    "semantic_hash": ""
+  },
+  "src/App.jsx": {
+    "mtime": 1790539055.3101141,
+    "seen": 1791085962.0074427,
+    "ast_hash": "bf2f7b9c1d6b5d716e6923f400968f1b",
+    "semantic_hash": ""
+  },
+  "src/components/About.jsx": {
+    "mtime": 1787912318.910967,
+    "seen": 1791085962.0074465,
+    "ast_hash": "f9e33535412e55f0cca20f072dd0e0ba",
+    "semantic_hash": ""
+  },
+  "src/components/Achievements.jsx": {
+    "mtime": 1787912387.5406084,
+    "seen": 1791085962.0074508,
+    "ast_hash": "e55ef7514a45e9688387a7733844bfdd",
+    "semantic_hash": ""
+  },
+  "src/components/AnimatedCounter.jsx": {
+    "mtime": 1790539055.311115,
+    "seen": 1791085962.0074565,
+    "ast_hash": "6655a92802e508f693116c041c45fc8a",
+    "semantic_hash": ""
+  },
+  "src/components/Contact.jsx": {
+    "mtime": 1790539055.3131132,
+    "seen": 1791085962.0074604,
+    "ast_hash": "848cc6765af822c2ad63263c4b631077",
+    "semantic_hash": ""
+  },
+  "src/components/Education.jsx": {
+    "mtime": 1787912372.2598917,
+    "seen": 1791085962.0074632,
+    "ast_hash": "dd79ad5518016efc284036f2ecadf3ee",
+    "semantic_hash": ""
+  },
+  "src/components/Footer.jsx": {
+    "mtime": 1787939499.9881272,
+    "seen": 1791085962.007466,
+    "ast_hash": "5bd98e96645f769c9e2b6e5d347a92ba",
+    "semantic_hash": ""
+  },
+  "src/components/Github.jsx": {
+    "mtime": 1789457297.7525575,
+    "seen": 1791085962.007469,
+    "ast_hash": "5271376f99efb689661e9a8fd1ec280d",
+    "semantic_hash": ""
+  },
+  "src/components/Hero.jsx": {
+    "mtime": 1789453811.4821148,
+    "seen": 1791085962.007472,
+    "ast_hash": "18df551e418224a25f49750bd7fe6e81",
+    "semantic_hash": ""
+  },
+  "src/components/Icons.jsx": {
+    "mtime": 1787939398.7736862,
+    "seen": 1791085962.0074754,
+    "ast_hash": "09067731d245524c79074e53b854632c",
+    "semantic_hash": ""
+  },
+  "src/components/Navbar.jsx": {
+    "mtime": 1791085548.1627736,
+    "seen": 1791085962.0074785,
+    "ast_hash": "c91f6bdb2753e64beb689e49b7bcc105",
+    "semantic_hash": ""
+  },
+  "src/components/ProjectCard.jsx": {
+    "mtime": 1787939567.7937264,
+    "seen": 1791085962.0074816,
+    "ast_hash": "2f3fb00ff5bbf4bc406d9c660429ca37",
+    "semantic_hash": ""
+  },
+  "src/components/Projects.jsx": {
+    "mtime": 1787912339.5382643,
+    "seen": 1791085962.0074842,
+    "ast_hash": "70d86c66bdcb51bf8402031d384261e1",
+    "semantic_hash": ""
+  },
+  "src/components/RadialRevealButton.jsx": {
+    "mtime": 1790539055.3154788,
+    "seen": 1791085962.007487,
+    "ast_hash": "d85c247c450c4364ff672a5cef31a2eb",
+    "semantic_hash": ""
+  },
+  "src/components/ScrollToTop.jsx": {
+    "mtime": 1787912218.7116394,
+    "seen": 1791085962.0074897,
+    "ast_hash": "0ccbec7098f52fedebae8e6be080771a",
+    "semantic_hash": ""
+  },
+  "src/components/SectionHeading.jsx": {
+    "mtime": 1787912210.3490863,
+    "seen": 1791085962.007492,
+    "ast_hash": "84fcd25f2dd5e58e4e3e438157c5fcf7",
+    "semantic_hash": ""
+  },
+  "src/components/Skills.jsx": {
+    "mtime": 1787912332.2662969,
+    "seen": 1791085962.0074947,
+    "ast_hash": "525795d6523584a3dc95ca6b57bec7d6",
+    "semantic_hash": ""
+  },
+  "src/context/ThemeContext.jsx": {
+    "mtime": 1791085548.188275,
+    "seen": 1791085962.0074975,
+    "ast_hash": "e828adad6d33d69642187ce5ae50bf15",
+    "semantic_hash": ""
+  },
+  "src/data/achievements.js": {
+    "mtime": 1787912147.8607223,
+    "seen": 1791085962.0075,
+    "ast_hash": "5d9ef8c66624023b76f8d518085cc8c1",
+    "semantic_hash": ""
+  },
+  "src/data/education.js": {
+    "mtime": 1790539981.8271685,
+    "seen": 1791085962.007503,
+    "ast_hash": "7781dbda3b89d8857ac910dfe5620728",
+    "semantic_hash": ""
+  },
+  "src/data/github.js": {
+    "mtime": 1789456445.4186218,
+    "seen": 1791085962.0075078,
+    "ast_hash": "308d7fe24184c72f13b393813d74bdae",
+    "semantic_hash": ""
+  },
+  "src/data/navigation.js": {
+    "mtime": 1788416547.6408026,
+    "seen": 1791085962.0075104,
+    "ast_hash": "fb74b51f5170b5f6e6f8d15e27fff131",
+    "semantic_hash": ""
+  },
+  "src/data/personalInfo.js": {
+    "mtime": 1788792320.7958891,
+    "seen": 1791085962.0075133,
+    "ast_hash": "9dcb1ca54cdbad33c4a9d8850be3979a",
+    "semantic_hash": ""
+  },
+  "src/data/projects.js": {
+    "mtime": 1788424663.1078718,
+    "seen": 1791085962.0075166,
+    "ast_hash": "cd266b60429c850767b6f0bcc6e0b256",
+    "semantic_hash": ""
+  },
+  "src/data/skills.js": {
+    "mtime": 1787912124.533471,
+    "seen": 1791085962.0075195,
+    "ast_hash": "899d9d47ed937c62f14be34e222ed58e",
+    "semantic_hash": ""
+  },
+  "src/hooks/useGithubProfile.js": {
+    "mtime": 1789456461.260865,
+    "seen": 1791085962.0075226,
+    "ast_hash": "d5993cb3bd171eb1177a530e948c1462",
+    "semantic_hash": ""
+  },
+  "src/hooks/useScrollSpy.js": {
+    "mtime": 1787912193.6637366,
+    "seen": 1791085962.0075252,
+    "ast_hash": "f9f23b2a1610934c0f67c04d4892d439",
+    "semantic_hash": ""
+  },
+  "src/main.jsx": {
+    "mtime": 1787912463.7208405,
+    "seen": 1791085962.0075283,
+    "ast_hash": "d2db690579d770a78753165d2b784b9b",
+    "semantic_hash": ""
+  },
+  "vite.config.js": {
+    "mtime": 1789453811.5138273,
+    "seen": 1791085962.0075312,
+    "ast_hash": "50de87294758751dbf6911b0264b1ddd",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1787911920.5057764,
+    "seen": 1791085962.007534,
+    "ast_hash": "75eb386f17caf77fd6fe3ce1d90968ee",
+    "semantic_hash": ""
+  },
+  "index.html": {
+    "mtime": 1790539055.2970943,
+    "seen": 1791085962.007537,
+    "ast_hash": "66d7337e2146aa48931fa3e105518ab8",
+    "semantic_hash": ""
+  },
+  "public/arghya_01E.png": {
+    "mtime": 1788004879.048704,
+    "seen": 1791085962.00754,
+    "ast_hash": "7f53753e73d12c1527f1b19ce666a8d7",
+    "semantic_hash": ""
+  },
+  "public/arghya_icon_01.png": {
+    "mtime": 1790539055.3081114,
+    "seen": 1791085962.0075426,
+    "ast_hash": "32578cb5d3ada28223d89134f7231898",
+    "semantic_hash": ""
+  },
+  "public/images/profile.jpg": {
+    "mtime": 1788004970.689421,
+    "seen": 1791085962.007546,
+    "ast_hash": "01a2df346fdee1b0fcd3e8b8ce5a47ec",
+    "semantic_hash": ""
+  }
+}

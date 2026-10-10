@@ -1,6 +1,5 @@
-import { createContext, useEffect, useState } from "react";
-
-const ThemeContext = createContext();
+import { useEffect, useState } from "react";
+import { ThemeContext } from "./ThemeContextCore";
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
@@ -32,4 +31,3 @@ export function ThemeProvider({ children }) {
     </ThemeContext.Provider>
   );
 }
-

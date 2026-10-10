@@ -4,7 +4,7 @@ export const education = [
     degree: "B.Tech in Computer Science & Engineering",
     institution: "Adamas University",
     location: "West Bengal, India",
-    duration: "2022 — 2026",
+    duration: "2024 — 2028",
     description:
       "Pursuing Bachelor of Technology in Computer Science & Engineering with focus on software development, data structures, algorithms, and modern web technologies.",
     coursework: [
@@ -26,7 +26,7 @@ export const education = [
   {
     id: 2,
     degree: "Higher Secondary Education (Class XII)",
-    institution: "Your School Name",
+    institution: "Patna Vivakanada Sikshaniketan (H.S.)",
     location: "West Bengal, India",
     duration: "2020 — 2022",
     description:
@@ -37,7 +37,7 @@ export const education = [
   {
     id: 3,
     degree: "Secondary Education (Class X)",
-    institution: "Your School Name",
+    institution: "Patna Vivakanada Sikshaniketan (H.S.)",
     location: "West Bengal, India",
     duration: "2020",
     description: "Completed secondary education with excellent academic record.",

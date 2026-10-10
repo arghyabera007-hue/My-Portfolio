@@ -1,4 +1,5 @@
 import Navbar from "./components/Navbar";
+import PullCord from "./components/PullCord";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Skills from "./components/Skills";
@@ -13,7 +14,8 @@ import ScrollToTop from "./components/ScrollToTop";
 export default function App() {
   return (
     <>
-      <div className="min-h-screen">
+      <div className="min-h-screen w-full overflow-x-hidden relative">
+        <PullCord />
         <Navbar />
         <main>
           <Hero />

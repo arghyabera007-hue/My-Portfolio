@@ -403,12 +403,12 @@ export default function Contact() {
                         href={item.href}
                         target={item.label !== "Email" ? "_blank" : undefined}
                         rel={item.label !== "Email" ? "noopener noreferrer" : undefined}
-                        className="text-sm text-surface-200 light:text-surface-700 hover:text-primary-400 transition-colors"
+                        className="text-sm text-surface-200 light:text-surface-700 hover:text-primary-400 transition-colors break-all"
                       >
                         {item.value}
                       </a>
                     ) : (
-                      <span className="text-sm text-surface-200 light:text-surface-700">
+                      <span className="text-sm text-surface-200 light:text-surface-700 break-words">
                         {item.value}
                       </span>
                     )}

@@ -4,21 +4,14 @@ import { Menu, X } from "lucide-react";
 import { navLinks } from "../data/navigation";
 import { personalInfo } from "../data/personalInfo";
 import { useScrollSpy } from "../hooks/useScrollSpy";
+import { useTheme } from "../hooks/useTheme";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const { theme } = useTheme();
 
   const sectionIds = navLinks.map((link) => link.href.replace("#", ""));
   const activeSection = useScrollSpy(sectionIds, 120);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   // Close mobile menu on resize
   useEffect(() => {
@@ -41,52 +34,81 @@ export default function Navbar() {
     setIsOpen(false);
   };
 
+  const isDark = theme === "dark";
+
   return (
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass shadow-lg shadow-black/5" : "bg-transparent"
-      }`}
+      className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none"
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-18">
+      <nav 
+        className={`pointer-events-auto transition-all duration-300 rounded-full px-2 py-1.5 md:px-4 md:py-2 flex items-center justify-between shadow-xl backdrop-blur-md border ${
+          isDark 
+            ? "bg-[#161618]/90 border-white/10" 
+            : "bg-white/90 border-black/10"
+        }`}
+      >
+        <div className="flex items-center">
           {/* Logo */}
           <a
             href="#home"
-            className="text-xl font-bold gradient-text hover:opacity-80 transition-opacity"
+            className={`text-lg md:text-xl font-bold mr-6 md:mr-10 ml-3 transition-opacity hover:opacity-80 tracking-tight ${isDark ? 'text-white' : 'text-gray-900'}`}
           >
-            &lt;{personalInfo.firstName} /&gt;
+            {personalInfo.firstName}<span className="text-red-500">.</span>
           </a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => {
-              const isActive =
-                activeSection === link.href.replace("#", "");
+              const isActive = activeSection === link.href.replace("#", "");
+              // Add special styling if the link is named "Resume"
+              const isResume = link.name.toLowerCase() === "resume";
+
+              let linkClasses = `relative px-4 py-2 text-[15px] font-medium rounded-full transition-colors duration-200 `;
+              let textClasses = `relative z-10 transition-colors duration-200 `;
+              
+              if (isActive) {
+                textClasses += isDark ? "text-white" : "text-red-700";
+              } else if (isResume) {
+                linkClasses += "text-red-500 hover:bg-red-500/10 hover:text-red-400";
+              } else {
+                linkClasses += isDark
+                  ? "text-gray-300 hover:text-white hover:bg-white/5"
+                  : "text-gray-600 hover:text-gray-900 hover:bg-black/5";
+              }
+
               return (
                 <a
                   key={link.name}
                   href={link.href}
-                  className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
-                    isActive
-                      ? "text-primary-400 bg-primary-500/10"
-                      : "text-surface-400 hover:text-surface-200 light:text-surface-700 light:hover:text-surface-900 hover:bg-surface-800/50 light:hover:bg-surface-100"
-                  }`}
+                  className={linkClasses}
                 >
-                  {link.name}
+                  {isActive && (
+                    <motion.div
+                      layoutId="active-nav-pill"
+                      className={`absolute inset-0 rounded-full ${
+                        isDark ? "bg-[#3f1f1f]" : "bg-red-100"
+                      }`}
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  <span className={textClasses}>{link.name}</span>
                 </a>
               );
             })}
           </div>
 
-
           {/* Mobile Menu Button */}
-          <div className="flex md:hidden items-center gap-2">
+          <div className="flex md:hidden items-center ml-2 mr-1">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg bg-surface-800 light:bg-surface-100 hover:bg-surface-700 light:hover:bg-surface-200 transition-colors cursor-pointer"
+              className={`p-2 rounded-full transition-colors ${
+                isDark 
+                  ? "text-gray-300 hover:bg-white/10" 
+                  : "text-gray-600 hover:bg-black/5"
+              }`}
               aria-label="Toggle menu"
               aria-expanded={isOpen}
             >
@@ -100,35 +122,46 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden glass border-t border-surface-800 light:border-surface-200"
+            initial={{ opacity: 0, y: -10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            className={`absolute top-full mt-4 left-4 right-4 md:hidden overflow-hidden rounded-2xl shadow-xl backdrop-blur-xl border pointer-events-auto ${
+              isDark 
+                ? "bg-[#161618]/95 border-white/10" 
+                : "bg-white/95 border-black/10"
+            }`}
           >
-            <div className="px-4 py-4 space-y-1">
-              {navLinks.map((link, index) => {
-                const isActive =
-                  activeSection === link.href.replace("#", "");
+            <div className="px-2 py-3 flex flex-col gap-1">
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.href.replace("#", "");
+                const isResume = link.name.toLowerCase() === "resume";
+                
+                let linkClasses = `block px-4 py-3 rounded-xl text-base font-medium transition-colors `;
+                
+                if (isActive) {
+                  linkClasses += isDark
+                    ? "bg-[#3f1f1f] text-white"
+                    : "bg-red-100 text-red-700";
+                } else if (isResume && !isActive) {
+                  linkClasses += "text-red-500 hover:bg-red-500/10";
+                } else {
+                  linkClasses += isDark
+                    ? "text-gray-300 hover:bg-white/5"
+                    : "text-gray-600 hover:bg-black/5";
+                }
+
                 return (
-                  <motion.a
+                  <a
                     key={link.name}
                     href={link.href}
                     onClick={handleLinkClick}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05 }}
-                    className={`block px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                      isActive
-                        ? "text-primary-400 bg-primary-500/10"
-                        : "text-surface-300 light:text-surface-700 hover:bg-surface-800/50 light:hover:bg-surface-100"
-                    }`}
+                    className={linkClasses}
                   >
                     {link.name}
-                  </motion.a>
+                  </a>
                 );
               })}
-
             </div>
           </motion.div>
         )}
